@@ -15,13 +15,12 @@ const RexistroUser = (req, res) => {
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).send("O ficheiro non foi actualizado.");
   }
-  /* const docs = [
-    {name: req.body.nome, apelido1: req.body.apelido1, orbitalPeriod: 75, radius: 3.4175, mass: 2.2e14},
+  const docs = [
+    {name: "Wild3", officialName: "81P/Wild", orbitalPeriod: 75, radius: 3.4175, mass: 2.2e14},
     {name: "Wild2", officialName: "81P/Wild", orbitalPeriod: 6.41, radius: 1.5534, mass: 2.3e13},
     {name: "Comet Hyakutake", officialName: "C/1996 B2", orbitalPeriod: 17000, radius: 0.77671, mass: 8.8e12}
-  ]; */
-  const docs = {name: req.body.nome, apelido1: req.body.apelido1, apelido2: req.body.apelido2}
-  ;
+  ]; 
+  //const docs = {name: req.body.nome, apelido1: req.body.apelido1, apelido2: req.body.apelido2};
   insertarUsuario(docs)
   sampleFile = req.files.usuario;
   uploadPath = staticRoute2 + sampleFile.name;
