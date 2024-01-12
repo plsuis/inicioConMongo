@@ -29,6 +29,10 @@ const RexistroUser = (req, res) => {
   });
 };
 
+const LerUser = (req, res) => {
+  
+}
+
 module.exports = {
   RexistroUser,
 };
