@@ -1,4 +1,4 @@
-const {insertarUsuario} = require("./funciones/insertoDatos.js")
+const {insertarUsuario,leoDatos} = require("./funciones/index.js")
 const path = require("path");
 const staticRoute2 = path.join(__dirname, "static\\imags\\");// sistema en windows
 
@@ -8,7 +8,6 @@ const RexistroUser = (req, res) => {
   let sampleFile;
   let uploadPath;
  
-  console.log('datos de entrada:',doc)
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).send("O ficheiro non foi actualizado.");
   }
@@ -29,10 +28,16 @@ const RexistroUser = (req, res) => {
   });
 };
 
-const LerUser = (req, res) => {
-  
+const LerUser = async (req,res) => {
+  console.log('estou en lerUser')
+  let usuarios = await leoDatos();
+  let saida = {
+    datos:usuarios
+  }
+  res.send(saida)
 }
 
 module.exports = {
   RexistroUser,
+  LerUser
 };

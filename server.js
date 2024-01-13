@@ -1,4 +1,6 @@
-const { RexistroUser } = require("./funcions.js");
+const { 
+  RexistroUser,
+  LerUser } = require("./funcions.js");
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
@@ -16,7 +18,7 @@ app.use(express.static(carpetaStatic));
 
 app.post("/rexistro", RexistroUser);
 
-
+app.get("/leodatos",LerUser)
 
 
 

@@ -26,6 +26,7 @@
       <button id="rexistrarUsuario">enviar</button>
 
     </form>
+    <button id="lerusuarios">Leo usuarios</button>
     <!--  <button id="crearLocal">Crear localStorage</button>
     <button id="borrarLocal">Borrar localStorage</button>
     <button id="crearSession">Crear sessionStorage</button>
@@ -35,6 +36,15 @@
     <button id="reciboDatosGet">recibo datos GET con async/await</button>
     <button id="reciboDatosGet2">recibo datos GET con fetch/then</button> -->
     <script>
+      lerusuarios.addEventListener("click", async (e)=>{
+        e.preventDefault();
+        let response = await fetch("/leodatos");
+        let datos = await response.json();
+
+        console.log('os usuarios son: ',datos)
+      })
+
+
       rexistrarUsuario.addEventListener("click", async (e) => {
         e.preventDefault();
         let response = await fetch("/rexistro", {method: "POST",body: new FormData(formRexistro) });
