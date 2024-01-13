@@ -26,6 +26,14 @@
       <button id="rexistrarUsuario">enviar</button>
 
     </form>
+
+
+    <div>
+      <ul id="lista">
+
+      </ul>
+    </div>
+
     <button id="lerusuarios">Leo usuarios</button>
     <!--  <button id="crearLocal">Crear localStorage</button>
     <button id="borrarLocal">Borrar localStorage</button>
@@ -39,9 +47,23 @@
       lerusuarios.addEventListener("click", async (e)=>{
         e.preventDefault();
         let response = await fetch("/leodatos");
-        let datos = await response.json();
+        let usuarios = await response.json();
 
-        console.log('os usuarios son: ',datos)
+        //console.log('os usuarios son: ',datos)
+
+
+        if(usuarios !== undefined){
+          console.log('chegaron os datos: ',usuarios.datos)
+          for(let usuario of usuarios.datos){
+            let creoElemento = document.createElement('div');
+            console.log('usuarios ',usuario.nome,usuario._id)
+            
+            //creoElemento.textContent = usuarios.nome
+          }
+          
+        }else{
+          console.log("algo pasou")
+        }
       })
 
 
