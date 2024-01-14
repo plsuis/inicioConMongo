@@ -1,6 +1,5 @@
 import {eventosHome} from "./eventos/eventosHome.js";
-import { updateUser } from "./eventos/eventosConServer.js";
-eventosHome(updateUser)
+eventosHome()
 
   /* crearLocal.addEventListener("click", function crearLocal() {
     localStorage.setItem("test", 1);

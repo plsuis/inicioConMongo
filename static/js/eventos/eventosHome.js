@@ -1,5 +1,6 @@
+import { updateUser } from "./eventosConServer.js";
 import { usuariosLista } from "./helpersEventos.js";
-function eventosHome(updateUser){
+function eventosHome(){
 
  
     lerusuarios.addEventListener("click", async (e)=>{
