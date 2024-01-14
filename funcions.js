@@ -1,4 +1,7 @@
-const {insertarUsuario,leoDatos} = require("./funciones/index.js")
+const {
+  insertarUsuario,
+  leoDatos,
+  updateUsuario} = require("./funciones/index.js")
 const path = require("path");
 const staticRoute2 = path.join(__dirname, "static\\imags\\");// sistema en windows
 
@@ -24,9 +27,19 @@ const RexistroUser = (req, res) => {
     let dato = {
       mensaxe: "Usuario rexistrado!"
     }
-    res.send(dato);
+    res.status(200).send(dato);
   });
 };
+
+const ModificoDato = async (req,res)=>{
+  const {id, novoValor} = req.body;
+  
+  updateUsuario(id,novoValor)
+  let resposta = {
+    mensaxe: "chegaron os datos"
+  }
+  res.status(200).send(resposta)
+}
 
 const LerUser = async (req,res) => {
   console.log('estou en lerUser')
@@ -39,5 +52,6 @@ const LerUser = async (req,res) => {
 
 module.exports = {
   RexistroUser,
-  LerUser
+  LerUser,
+  ModificoDato
 };
