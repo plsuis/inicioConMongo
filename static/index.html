@@ -4,35 +4,49 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="css/estilo.css" rel="stylesheet">
+    <script async type="module" src="./js/index.js"></script>
     <title>Enviando ficheiro</title>
   </head>
   <body>
-    <!-- <nav>
-      <a href="./">home</a>
-      <a href="./somos">quenes somos</a>
-      <a href="./contacto">contacto</a>
-      <a href="./contacto.html">contacto.html</a>
-    </nav>
-    Estou en Index -->
-    <!--<img src="./imags/buscador.png" style="width: 20px;">-->
+   
+    <header>
+      <nav>
+        <a href="./">home</a>
+        <a href="./somos">quenes somos</a>
+        <a href="./contacto">contacto</a>
+        <a href="./contacto.html">contacto.html</a>
+      </nav>
+    </header>
+    <main>
+      <section class="usuarios">
+        <!-- <h2>Sección usuarios</h2> -->
+        <div class="lista-usuarios">
+         
+        </div>
+      </section>
+      <section class="form">
+        <aside>
+          <form id="formRexistro" name="rexistro" enctype="multipart/form-data">
 
-    <form id="formRexistro" name="rexistro" enctype="multipart/form-data">
+            <input name="nome" type="text" placeholder="Introduce nome" />
+            <input name="apelido1" type="text" placeholder="Introduce apelido1" />
+            <input name="apelido2" type="text" placeholder="Introduce apelido2" />
+            <input name="usuario" type="file" placeholder="introduce o ficheiro" />
+      
+            <button id="rexistrarUsuario">enviar</button>
+      
+          </form>
+        </aside>
+      </section>
+    </main>
+    
 
-      <input name="nome" type="text" placeholder="Introduce nome" />
-      <input name="apelido1" type="text" placeholder="Introduce apelido1" />
-      <input name="apelido2" type="text" placeholder="Introduce apelido2" />
-      <input name="usuario" type="file" placeholder="introduce o ficheiro" />
 
-      <button id="rexistrarUsuario">enviar</button>
-
-    </form>
-
-
-    <div>
-      <ul id="lista">
-
-      </ul>
-    </div>
+    
 
     <button id="lerusuarios">Leo usuarios</button>
     <!--  <button id="crearLocal">Crear localStorage</button>
@@ -43,81 +57,7 @@
     <button id="envioDatosQuery">paso datos query</button>
     <button id="reciboDatosGet">recibo datos GET con async/await</button>
     <button id="reciboDatosGet2">recibo datos GET con fetch/then</button> -->
-    <script>
-      lerusuarios.addEventListener("click", async (e)=>{
-        e.preventDefault();
-        let response = await fetch("/leodatos");
-        let usuarios = await response.json();
-
-        //console.log('os usuarios son: ',datos)
-
-
-        if(usuarios !== undefined){
-          console.log('chegaron os datos: ',usuarios.datos)
-          for(let usuario of usuarios.datos){
-            let creoElemento = document.createElement('div');
-            console.log('usuarios ',usuario.nome,usuario._id)
-            
-            //creoElemento.textContent = usuarios.nome
-          }
-          
-        }else{
-          console.log("algo pasou")
-        }
-      })
-
-
-      rexistrarUsuario.addEventListener("click", async (e) => {
-        e.preventDefault();
-        let response = await fetch("/rexistro", {method: "POST",body: new FormData(formRexistro) });
-
-        let result = await response.json();
-        console.log("resposta de rexistrarUsuario: ", result);
-      });
-      /* crearLocal.addEventListener("click", function crearLocal() {
-        localStorage.setItem("test", 1);
-        console.log(localStorage.getItem("test"));
-      });
-      borrarLocal.addEventListener("click", function borrarLocal() {
-        localStorage.removeItem("test");
-      });
-      crearSession.addEventListener("click", function crearSession() {
-        sessionStorage.setItem("clave", "Jacinto");
-        console.log(sessionStorage.getItem("clave"));
-      });
-      borrarSession.addEventListener("click", function borrarSession() {
-        sessionStorage.removeItem("clave");
-      });
-
-      envioDatosParams.addEventListener("click", async () => {
-        let response = await fetch("/datos/4");
-      });
-      envioDatosQuery.addEventListener("click", async () => {
-        let response = await fetch("/datosquery/?name=Juan&apelido=fernandez");
-      });
-      reciboDatosGet.addEventListener("click", async () => {
-        let response = await fetch("/backEnviaDatos");
-        let result = await response.json();
-        console.log("datos que envía o back: ", result);
-      });
-      reciboDatosGet2.addEventListener("click", () => {
-        const _fetch = fetch("./backEnviaDatos");
-
-        _fetch
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error(`HTTP error: ${response.status}`);
-            }
-            //console.log("response é: ", response);
-            console.log(`a varible response é: ${response}`);
-            return response.json();
-          })
-          .then((data) => {
-            console.log(data);
-          });
-      });
-*/
+    
       
-    </script>
   </body>
 </html>
