@@ -75,7 +75,7 @@ section.form{
 /* lista usuarios */
 
 .lista-usuarios{
-    background-color: #7474b2;
+    background-color: #c3c3d4;
     margin:15px;
 }
 .lista-usuarios > div {
@@ -96,4 +96,5 @@ input[name="lista"]:focus{
 img{
     width: 20px;
     cursor: pointer;
+    margin: 5px;
 }
