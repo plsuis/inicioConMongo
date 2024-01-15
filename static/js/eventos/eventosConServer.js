@@ -1,5 +1,6 @@
 import { 
     guardarDato,
+    borroDato
      } from "../comunicacion/conServer.js";
 import { iconoDisqueteSave,iconoDisquete } from "../../datos/constantes.js";
 const updateUser = ()=>{
@@ -25,9 +26,35 @@ const updateUser = ()=>{
 }
 
 
+const eventDeleteUser = ()=>{
+    let imaxenBasura = document.querySelectorAll("[data-eliminar]")
+    for(let etiqueta of imaxenBasura){
+        etiqueta.addEventListener("click",(e)=>{
+            console.log('eventDeleteUser e.target',e.target.previousElementSibling.previousElementSibling.id)
+            console.log('eventDeleteUser e.target',e.target)
+            let id = e.target.previousElementSibling.previousElementSibling.id;
+            e.target.previousElementSibling.previousElementSibling.remove()
+            e.target.previousElementSibling.remove();
+            e.target.remove()
+            e.stopImmediatePropagation()
+            borroDato(id)
+        })
+    }
+}
 
-
-
+const comunicandoServer = async (datos)=>{
+    let response;
+    if(datos.tipoComunicacion !== undefined){
+        console.log('entra en POST',datos.tipoComunicacion)
+        response = await fetch(datos.endpoint,datos.tipoComunicacion);//'POST'
+    }else{
+        response = await fetch(`${datos.endpoint}`);// 'GET'
+    }
+    let resposta = await response.json();
+    return resposta
+}
 export{
-    updateUser
+    updateUser,
+    eventDeleteUser,
+    comunicandoServer
 }
