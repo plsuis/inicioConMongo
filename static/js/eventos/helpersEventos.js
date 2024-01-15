@@ -1,28 +1,16 @@
 import { iconoDisquete,iconoPapelera } from "../../datos/constantes.js";
-import { borroDato } from "../comunicacion/conServer.js";
+import { eventDeleteUser } from "./eventosConServer.js";
+
 const eventUpdateUser = (elemento)=>{ 
 
     elemento.addEventListener("click",(e)=>{
-      console.log('clicó sobre o elemento: ',e.target)
         e.target.removeAttribute("readonly")
         e.target.focus()
-        e.target.nextElementSibling.setAttribute("src","./imaxesConstantes/diskette.png")
+        e.target.nextElementSibling.setAttribute(iconoDisquete.src,iconoDisquete.url)
     })
     
 }
 
-const eventDeleteUser = ()=>{
-    let imaxenBasura = document.querySelectorAll("[data-eliminar]")
-    for(let etiqueta of imaxenBasura){
-        etiqueta.addEventListener("click",(e)=>{
-            console.log('eventDeleteUser e.target',e.target.previousElementSibling.previousElementSibling.id)
-            console.log('eventDeleteUser e.target',e.target)
-            let id = e.target.previousElementSibling.previousElementSibling.id;
-            e.stopImmediatePropagation()
-            borroDato(id)
-        })
-    }
-}
 
 const creoImaxen = (icono)=>{
     let imaxen = document.createElement('img');
