@@ -1,7 +1,6 @@
 const {usuario} = require("./helpers.js")
-
 const {MongoClient} = require("mongodb")
-const url = "mongodb://127.0.0.1:27017";
+const url = process.env.URLMONGO
 const database = 'proba1'
 const client = new MongoClient(url)
 const coleccion = "usuarios";
