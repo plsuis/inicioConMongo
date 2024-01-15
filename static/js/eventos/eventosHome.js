@@ -1,12 +1,14 @@
-import { updateUser } from "./eventosConServer.js";
+import { updateUser, comunicandoServer } from "./eventosConServer.js";
 import { usuariosLista } from "./helpersEventos.js";
 function eventosHome(){
 
  
     lerusuarios.addEventListener("click", async (e)=>{
         e.preventDefault();
-        let response = await fetch("/leodatos");
-        let usuarios = await response.json();
+        let datos = {
+          endpoint: '/leodatos'
+        }
+        let usuarios = await comunicandoServer(datos)
         console.log("usuarios: ",usuarios)
         if(usuarios !== undefined){          
           usuariosLista(usuarios)
@@ -19,9 +21,13 @@ function eventosHome(){
     
     rexistrarUsuario.addEventListener("click", async (e) => {
         e.preventDefault();
-        let response = await fetch("/rexistro", {method: "POST",body: new FormData(formRexistro) });
-    
-        let result = await response.json();
+
+        let datos = {
+          endpoint: "/rexistro",
+          tipoComunicacion: {method: "POST",body: new FormData(formRexistro) }
+        }
+        let result = await comunicandoServer(datos)
+        
         console.log("resposta de rexistrarUsuario: ", result);
       });
 }
