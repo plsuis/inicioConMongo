@@ -45,7 +45,6 @@ const eventDeleteUser = ()=>{
 const comunicandoServer = async (datos)=>{
     let response;
     if(datos.tipoComunicacion !== undefined){
-        console.log('entra en POST',datos.tipoComunicacion)
         response = await fetch(datos.endpoint,datos.tipoComunicacion);//'POST'
     }else{
         response = await fetch(`${datos.endpoint}`);// 'GET'
