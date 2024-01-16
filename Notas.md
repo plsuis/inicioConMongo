@@ -10,3 +10,7 @@ git push -u origin main
 
 ## Arranque do server
 > Teño instalado o módulo `nodemon`, e o teño configurado para que arranque con `npm start` 
+
+## Lectura obligatoria
+
+> Para poder entender o programa, aconséllase a lectura da carpeta de ***Arquivos_md***
