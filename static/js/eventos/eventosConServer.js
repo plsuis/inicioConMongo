@@ -42,18 +42,7 @@ const eventDeleteUser = ()=>{
     }
 }
 
-const comunicandoServer = async (datos)=>{
-    let response;
-    if(datos.tipoComunicacion !== undefined){
-        response = await fetch(datos.endpoint,datos.tipoComunicacion);//'POST'
-    }else{
-        response = await fetch(`${datos.endpoint}`);// 'GET'
-    }
-    let resposta = await response.json();
-    return resposta
-}
 export{
     updateUser,
-    eventDeleteUser,
-    comunicandoServer
+    eventDeleteUser
 }

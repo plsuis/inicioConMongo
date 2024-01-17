@@ -1,5 +1,6 @@
-import { updateUser, comunicandoServer } from "./eventosConServer.js";
+import { updateUser } from "./eventosConServer.js";
 import { usuariosLista } from "./helpersEventos.js";
+import {comunicandoServer_POST_GET} from "../comunicacion/conServer.js"
 function eventosHome(){
 
  
@@ -8,7 +9,7 @@ function eventosHome(){
         let datos = {
           endpoint: '/leodatos'
         }
-        let usuarios = await comunicandoServer(datos)
+        let usuarios = await comunicandoServer_POST_GET(datos)
         console.log("usuarios: ",usuarios)
         if(usuarios !== undefined){          
           usuariosLista(usuarios)
@@ -26,7 +27,7 @@ function eventosHome(){
           endpoint: "/rexistro",
           tipoComunicacion: {method: "POST",body: new FormData(formRexistro) }
         }
-        let result = await comunicandoServer(datos)
+        let result = await comunicandoServer_POST_GET(datos)
         
         console.log("resposta de rexistrarUsuario: ", result);
       });

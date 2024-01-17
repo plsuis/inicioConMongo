@@ -14,7 +14,18 @@ const borroDato = async (id)=>{
     const respostaJson = await respostaServer.json();
     console.log("resposta : ",respostaJson)
 }
+const comunicandoServer_POST_GET = async (datos)=>{
+    let response;
+    if(datos.tipoComunicacion !== undefined){
+        response = await fetch(datos.endpoint,datos.tipoComunicacion);//'POST'
+    }else{
+        response = await fetch(`${datos.endpoint}`);// 'GET'
+    }
+    let resposta = await response.json();
+    return resposta
+}
 export{
     guardarDato,
-    borroDato
+    borroDato,
+    comunicandoServer_POST_GET
 }
