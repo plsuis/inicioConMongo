@@ -1,6 +1,6 @@
 const {MongoClient, ObjectId} = require("mongodb")
 const url = process.env.URLMONGO;
-const database = 'proba1'
+const database = process.env.BBDD;
 const client = new MongoClient(url)
 const coleccion = "usuarios";
 
