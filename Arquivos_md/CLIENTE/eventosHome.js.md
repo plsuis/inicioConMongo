@@ -53,8 +53,11 @@ let usuarios = await comunicandoServer_POST_GET(datos)
 Dentro deste if, observamos a función que vai pintar no HTML `usuariosLista`, o listado de usuarios. Como se observa, a ``variable usuarios`` é a que entra. 
 
 Na seguinte línea, colocamos a función `updateUser`, é colocada aquí por temas do burbujeo de eventos. Esta función, como o seu nome indica, vai ser a que modifique os usuarios cando cliquemos o botón de gardar:
+
 <div align="center">
+
 ![imaxe de gardar](/Arquivos_md/CLIENTE/imaxes/imaxeGardar.png)
+
 </div>
 
 ## Evento: rexistrarUsuario
