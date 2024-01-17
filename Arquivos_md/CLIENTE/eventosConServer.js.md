@@ -109,9 +109,9 @@ borroDato(id)
 ```
 ### Evento stopImmediatePropagation
 
-O estar dentro dun div diferentes eventos, como temos falado e visto, (recomendo que miredes o vídeo da clase), as veces propáganse eventos. 
+O estar dentro dun div diferentes eventos, como temos falado e visto, (recomendo que miredes o vídeo da clase), ` propáganse eventos`. 
 
-E neste caso, así sucede, polo que é necesario paralo a través da función:
+Neste caso, é necesario paralo a través da función:
 
 ```javascript
 e.stopImmediatePropagation()
