@@ -2,6 +2,10 @@
 
 Neste index.html podemos observar diferentes elementos, entre eles:
 
+- O arquivo `js`, lembrar que está da seguinte maneira:
+```html
+<script async type="module" src="./js/index.js"></script>
+```
 - A navegación, a través de: 
     - A etiqueta ```nav```
 - O formulario: 
