@@ -1,6 +1,7 @@
 const guardarDato = async (datos)=>{
     const datosServer = await fetch(`/gardarusuario`,{
-        method: 'POST',
+        //method: 'POST',
+        method: 'PUT',
         headers:{
             "Content-Type": "application/json"
         },
@@ -10,7 +11,7 @@ const guardarDato = async (datos)=>{
     console.log('resposta: ',resposta)
 }
 const borroDato = async (id)=>{
-    const respostaServer = await fetch(`/borrouser/${id}`);
+    const respostaServer = await fetch(`/borrouser/${id}`,{method:"DELETE"});
     const respostaJson = await respostaServer.json();
     console.log("resposta : ",respostaJson)
 }

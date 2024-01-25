@@ -20,10 +20,16 @@ const carpetaStatic = path.join(__dirname, "static");
 app.use(express.static(carpetaStatic));
 
 app.post("/rexistro", RexistroUser);
-app.post("/gardarusuario",ModificoDato)
+//app.post("/gardarusuario",ModificoDato)
+app.put("/gardarusuario",ModificoDato)
 app.get("/leodatos",LerUser)
-app.get("/borrouser/:id",BorroDato)
-
+//app.get("/borrouser/:id",BorroDato)
+app.delete("/borrouser/:id",BorroDato)
+app.get("/:usuario",(req,res)=>{
+  const {usuario} = req.params
+  console.log('usuario ',usuario)
+  res.sendFile("contacto.html", { root: carpetaStatic });
+})
 
 /*
 app.get("/contacto", (req, res) => {

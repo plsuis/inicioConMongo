@@ -2,16 +2,18 @@ const {MongoClient, ObjectId} = require("mongodb")
 const url = process.env.URLMONGO;
 const database = process.env.BBDD;
 const client = new MongoClient(url)
-const coleccion = "usuarios";
+const coleccion = process.env.COLECCION;
 
 async function updateUsuario(id,novoNome) {
+  
+  let conexion;
     try {
-      console.log('Estou en updateUsuario: ',id,novoNome)
-      await client.connect();
+      
+      conexion = await client.connect();
         const db = client.db(database);
         const coll = db.collection(coleccion);
         const filtro ={
-            _id:new ObjectId(id)
+            _id: new ObjectId(id)
         }
         const dato = [{            
             $set: {
@@ -19,11 +21,15 @@ async function updateUsuario(id,novoNome) {
             }
         }] 
        
-        const result = await coll.updateMany(filtro,dato);
-      console.log(result)
-    } finally {
-      await client.close();
-     
+      //result = await coll.updateOne(filtro,dato);
+      const result = await coll.updateMany(filtro,dato);
+      //console.log("resul: " + result.modifiedCount,result);
+      return result
+      
+    }catch(error){
+      throw new Error("Error o modificalo dato")
+    }finally {
+      if(conexion) await client.close();
     }
   }
 

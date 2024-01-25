@@ -35,25 +35,23 @@ const RexistroUser = (req, res) => {
 const ModificoDato = async (req,res)=>{
   const {id, novoValor} = req.body;
   
-  updateUsuario(id,novoValor)
-  let resposta = {
-    mensaxe: "chegaron os datos"
-  }
-  res.status(200).send(resposta)
+ const resultado = await updateUsuario(id,novoValor)
+
+ resultado.modifiedCount ?  res.status(200).send({mensaxe: "o dato foi modificado"}) :  res.status(100).send("Algo pasou")
+
+ 
 }
 
 const BorroDato = async (req,res)=>{
   const {id} = req.params;
   console.log('o id é: ',id)
-  deleteUsuario(id)
-  let resposta = {
-    mensaxe: "chegaron os datos"
-  }
-  res.status(200).send(resposta)
+  const resultado = deleteUsuario(id)
+
+  resultado.deletedCount ? res.status(200).send({mensaxe: "o dato foi borrado"}) : res.status(100).send("Algo pasou")
+ 
 }
 
 const LerUser = async (req,res) => {
-  console.log('estou en lerUser')
   let usuarios = await leoDatos();
   let saida = {
     datos:usuarios

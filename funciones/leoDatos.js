@@ -3,14 +3,14 @@ const {MongoClient} = require("mongodb")
 const url = process.env.URLMONGO
 const database = process.env.BBDD;
 const client = new MongoClient(url)
-const coleccion = "usuarios";
-
+const coleccion = process.env.COLECCION;
 
 
 async function leoDatos() {
+  let conexion;
     try {
       
-      await client.connect();
+      conexion = await client.connect();
       const db = client.db(database);
       const coll = db.collection(coleccion);
       
@@ -26,9 +26,11 @@ async function leoDatos() {
       }
      
       return datosUsers
-    } finally {
+    } catch(error){
+      throw new Error("Error o ler datos")
+    }finally {
      
-      await client.close();
+      if(conexion) await client.close();
      
     }
   }
